@@ -72,6 +72,8 @@ export default function App() {
                 <LoginForm onLogin={handleLogin} loading={loading} />
             ) : instanceState !== "authorized" ? (
                 <QRCode
+                    idInstance={idInstance}
+                    apiTokenInstance={apiTokenInstance}
                     instanceState={instanceState}
                     onLogout={handleLogout}
                     checkInstanceState={checkInstanceState}

@@ -18,6 +18,18 @@ export const getStateInstance = async (
     }
 };
 
+export const getQRCodeInstance = async (idInstance: string, apiTokenInstance: string) => {
+    const url = `${getBaseUrl(idInstance)}/waInstance${idInstance}/qr/${apiTokenInstance}`;
+
+    try {
+        const response = await fetch(url);
+        return await response.json();
+    } catch (error) {
+        console.error("Ошибка при получении QR-кода:", error);
+        return null;
+    }
+};
+
 export const sendMessageInstance = async (
     idInstance: string,
     apiTokenInstance: string,

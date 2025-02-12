@@ -7,7 +7,7 @@
 Перед использованием убедитесь, что у вас:
 
 1. **Есть аккаунт** на [Green API](https://console.green-api.com/auth).
-2. **Создан Instance**, привязанный к вашему мобильному номеру.
+2. **Создан Instance**
 3. **Включены настройки получения сообщений в Webhooks**:
     - ✅ *Receive webhooks on incoming messages and files*
     - ✅ *Receive webhooks on sent messages statuses*
@@ -44,5 +44,6 @@
 ## 🚀 Использование
 
 1. Введите **idInstance** и **apiTokenInstance**.
+2. Отсканируйте qrcode с помощъю  whatsapp
 2. Укажите контакт для общения.
 3. Начните отправку сообщений!
