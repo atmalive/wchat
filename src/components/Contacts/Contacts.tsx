@@ -16,17 +16,15 @@ export const Contacts: React.FC<ContactsProps> = ({
     onDeleteContact,
     selectedContact,
 }) => {
-    const [newContact, setNewContact] = useState<string>("");
+    const [newContact, setNewContact] = useState("");
 
     const handleAdd = () => {
-        const sanitizedNumber = newContact.replace(/\D/g, "");
-
-        if (!sanitizedNumber || sanitizedNumber.length < 10 || sanitizedNumber.length > 15) {
+        if (!newContact || newContact.length < 10 || newContact.length > 15) {
             alert("Введите корректный номер телефона (10-15 цифр)");
             return;
         }
-        if (!contacts.includes(sanitizedNumber)) {
-            onAddContact(sanitizedNumber);
+        if (!contacts.includes(newContact)) {
+            onAddContact(newContact);
         }
         setNewContact("");
     };
@@ -47,7 +45,7 @@ export const Contacts: React.FC<ContactsProps> = ({
                         placeholder="Например: 79990000000"
                         className="border border-black text-black p-2 w-full rounded-l"
                         value={newContact}
-                        onChange={(e) => setNewContact(e.target.value.replace(/\D/g, ""))} // Убираем нецифровые символы
+                        onChange={(e) => setNewContact(e.target.value.replace(/\D/g, ""))}
                         onKeyDown={handleKeyDown}
                     />
                     <button

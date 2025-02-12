@@ -3,11 +3,11 @@ import { Chat, Contacts, LoginForm, QRCode } from "./components";
 import { getStateInstance } from "./api/green-api.ts";
 
 export default function App() {
-    const [loading, setLoading] = useState<boolean>(false);
-    const [idInstance, setIdInstance] = useState<string>("");
-    const [apiTokenInstance, setApiTokenInstance] = useState<string>("");
-    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-    const [instanceState, setInstanceState] = useState<string>("");
+    const [loading, setLoading] = useState(false);
+    const [idInstance, setIdInstance] = useState("");
+    const [apiTokenInstance, setApiTokenInstance] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [instanceState, setInstanceState] = useState("");
     const [contacts, setContacts] = useState<string[]>([]);
     const [selectedContact, setSelectedContact] = useState<string | null>(null);
 

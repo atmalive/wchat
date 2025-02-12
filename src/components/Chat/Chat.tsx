@@ -16,16 +16,12 @@ interface ChatProps {
 const time = 5000;
 
 export const Chat: React.FC<ChatProps> = ({ selectedContact, idInstance, apiTokenInstance }) => {
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState(false);
     const [messages, setMessages] = useState<MessageType[]>([]);
-    const [messageText, setMessageText] = useState<string>("");
+    const [messageText, setMessageText] = useState("");
     const scrollRef = useRef<HTMLDivElement | null>(null);
 
     const seconds = Math.round(time / 1000);
-
-    useEffect(() => {
-        setMessages([]);
-    }, [selectedContact]);
 
     const sendMessage = async () => {
         if (!messageText.trim()) return;
@@ -89,6 +85,8 @@ export const Chat: React.FC<ChatProps> = ({ selectedContact, idInstance, apiToke
     };
 
     useEffect(() => {
+        setMessages([]);
+
         if (selectedContact) {
             const intervalId = setInterval(receiveMessages, time);
             return () => clearInterval(intervalId);
@@ -126,6 +124,7 @@ export const Chat: React.FC<ChatProps> = ({ selectedContact, idInstance, apiToke
             <div className="p-4 mt-auto border-t flex">
                 <input
                     type="text"
+                    disabled={loading}
                     value={messageText}
                     onChange={(e) => setMessageText(e.target.value)}
                     className="border border-black text-black rounded-l p-2 w-full"
@@ -135,7 +134,7 @@ export const Chat: React.FC<ChatProps> = ({ selectedContact, idInstance, apiToke
                 <button
                     onClick={sendMessage}
                     disabled={loading}
-                    className={` text-white px-4 py-2 rounded-r cursor-pointer hover:opacity-80 ${loading ? "bg-gray-400" : "bg-green-500"}`}>
+                    className={`text-white px-4 py-2 rounded-r cursor-pointer hover:opacity-80 ${loading ? "bg-gray-400" : "bg-green-500"}`}>
                     Отправить
                 </button>
             </div>
